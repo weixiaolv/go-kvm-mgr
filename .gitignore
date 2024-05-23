@@ -20,7 +20,7 @@ bin
 .metadata
 
 # libvirt
-go-libvirt
+build_libvirt/
 
 # idea
 .idea

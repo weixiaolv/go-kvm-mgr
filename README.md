@@ -11,6 +11,35 @@ go-libvirt 使用前，需要自动生成对应版本的 go 源代码，以 libv
 * 下载依赖环境
   
   ```sh
+  sudo apt install python3-pip
+  pip install docutils
+  export PATH=$PATH:~/.local/bin
+  sudo apt install meson libxml2-utils xsltproc libgnutls28-dev libxml2-dev
+  
+  mkdir build_libvirt
+  cd build_libvirt
+  
+  git clone https://github.com/libvirt/libvirt.git
+  cd libvirt
+  git checkout v7.0.0
+  meson setup build
+  export LIBVIRT_SOURCE=~/projects/golang/go-kvm-mgr/build_libvirt/libvirt
+  cd ../go-libvirt/
+  go generate ./...
+  
+  cp $LIBVIRT_SOURCE/*.gen.go ../../libvirt/
+  
+  
+  
+  
+  cd ..
+  git clone https://github.com/digitalocean/go-libvirt.git
+  cd go-libvirt
+  
+  sudo apt install 
+  
+  
+  
   
   ```
 
