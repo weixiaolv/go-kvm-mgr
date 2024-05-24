@@ -17,7 +17,11 @@ func GetConn(host string) (*libvirt.Libvirt, error) {
     stringUrlBuilder.WriteString("/system")
 
     //uri, _ := url.Parse(string(libvirt.QEMUSystem))
-    uri, _ := url.Parse(stringUrlBuilder.String())
+    uri, err := url.Parse(stringUrlBuilder.String())
+    if err != nil {
+        log.Printf("url error: %v", err)
+        return nil, err
+    }
     l, err := libvirt.ConnectToURI(uri)
     if err != nil {
         log.Printf("failed to connect: %v", err)
